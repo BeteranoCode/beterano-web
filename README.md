@@ -1,11 +1,29 @@
-# BETERANO WEB (Meta-repo)
+# BETERANO WEB
 
-Este repositorio sirve como entorno de desarrollo centralizado para todos los proyectos web del ecosistema BETERANO.
+Este repositorio actúa como **meta-repo** del ecosistema web de BETERANO, centralizando el desarrollo de múltiples proyectos que conforman la plataforma digital de vehículos clásicos, restauración, venta y comunidad.
 
-Incluye los siguientes repositorios como carpetas locales:
+## 🔧 Estructura de subproyectos
 
-- `beterano-map`: mapa colaborativo estilo Precious Plastic
-- `beteranocode.github.io`: header global, assets compartidos y componentes comunes
-- `marketplace-inbox-manager`: interfaz para gestionar mensajes y publicaciones de venta
+- [`beterano-map`](https://github.com/BeteranoCode/beterano-map)  
+  Mapa interactivo basado en React + Leaflet, inspirado en Precious Plastic Map. Visualiza y filtra ubicaciones de restauradores, grúas, desguaces, talleres y vehículos abandonados.
 
-> Recomendado abrir este repositorio en un workspace de VS Code para trabajar con todos los proyectos en paralelo.
+- [`beteranocode.github.io`](https://github.com/BeteranoCode/beteranocode.github.io)  
+  Repositorio para el **header global**, tipografía, assets SVG y componentes compartidos. Todos los demás proyectos lo importan.
+
+- [`marketplace-inbox-manager`](https://github.com/BeteranoCode/marketplace-inbox-manager)  
+  Herramienta para gestionar mensajes de compra-venta interceptados por los bots de WhatsApp.
+
+- [`beterano-catalogo-web`](https://github.com/BeteranoCode/beterano-catalogo-web)  
+  Frontend de catálogo de piezas por modelo de vehículo, vinculado a la biblioteca técnica.
+
+- [`beterano-data`](https://github.com/BeteranoCode/beterano-data)  
+  Repositorio centralizado con archivos `JSON`, imágenes y tablas técnicas en Excel:  
+  - `vehiculos.json`  
+  - `biblioteca_piezas.json`  
+  - `vin_prefixes.json`  
+  - `img/biblioteca_piezas/` y `img/vehiculos/`
+
+## 🧩 Abrir en VS Code
+
+Este repositorio incluye un archivo de workspace para abrir todos los subproyectos a la vez:
+
