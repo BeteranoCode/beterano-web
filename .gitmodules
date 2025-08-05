@@ -1,0 +1,15 @@
+[submodule "beterano-map"]
+	path = beterano-map
+	url = https://github.com/BeteranoCode/beterano-map.git
+[submodule "beteranocode.github.io"]
+	path = beteranocode.github.io
+	url = https://github.com/BeteranoCode/beteranocode.github.io.git
+[submodule "marketplace-inbox-manager"]
+	path = marketplace-inbox-manager
+	url = https://github.com/BeteranoCode/marketplace-inbox-manager.git
+[submodule "beterano-catalogo-web"]
+	path = beterano-catalogo-web
+	url = https://github.com/BeteranoCode/beterano-catalogo-web.git
+[submodule "beterano-data"]
+	path = beterano-data
+	url = https://github.com/BeteranoCode/beterano-data.git
