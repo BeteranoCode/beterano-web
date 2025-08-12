@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smoke Test — beterano-web-header</title>
+
+  <!-- Carga del CSS del header (nuevo repo) -->
+  <link rel="preload" as="style"
+        href="https://beteranocode.github.io/beterano-web-header/header/header.css"
+        onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://beteranocode.github.io/beterano-web-header/header/header.css">
+  </noscript>
+
+  <style>
+    :root { --header-h: 0px; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f6f6f6;
+      /* el padding-top se ajusta por JS según la altura del header */
+    }
+    .layout {
+      min-height: calc(100vh - var(--header-h));
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 6px 22px rgba(0,0,0,.08);
+    }
+    .spacer {
+      height: 120vh; /* para poder scrollear y ver el comportamiento */
+      background: repeating-linear-gradient(
+        -45deg, #fafafa, #fafafa 20px, #f0f0f0 20px, #f0f0f0 40px
+      );
+      border-radius: 12px;
+      margin-top: 18px;
+    }
+    #debug {
+      position: fixed; right: 10px; bottom: 10px;
+      background: rgba(0,0,0,.75); color: #fff;
+      padding: 6px 10px; border-radius: 10px;
+      font-size: 12px; z-index: 99999; font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Punto de montaje opcional para el header (si el loader lo usa) -->
+  <header id="site-header"></header>
+
+  <main class="layout">
+    <div class="card">
+      <h1>Smoke Test del Header</h1>
+      <p>Esta página carga el header desde
+        <code>beterano-web-header</code> y ajusta el <em>padding-top</em>
+        del <code>body</code> según su altura real.</p>
+      <ul>
+        <li>Comprueba que la barra aparece y es funcional (hamburguesa, idioma, etc.).</li>
+        <li>Redimensiona la ventana para ver si el padding se recalcula.</li>
+        <li>Usa esta base para validar layouts en tus proyectos.</li>
+      </ul>
+      <div class="spacer"></div>
+    </div>
+  </main>
+
+  <div id="debug">header: <span id="hVal">0</span>px</div>
+
+  <!-- Loader del header (nuevo repo) -->
+  <script src="https://beteranocode.github.io/beterano-web-header/header/header-loader.js" defer></script>
+
+  <!-- Ajuste automático de altura/padding -->
+  <script>
+    (function () {
+      function setPad() {
+        const h = document.querySelector('#site-header') || document.querySelector('header#site-header, header');
+        if (!h) return;
+        const hh = Math.round(h.getBoundingClientRect().height || 0);
+        document.documentElement.style.setProperty('--header-h', hh + 'px');
+        document.body.style.paddingTop = hh + 'px';
+        const el = document.getElementById('hVal');
+        if (el) el.textContent = hh;
+        console.log('[test] header height =>', hh);
+      }
+      window.addEventListener('load', () => setTimeout(setPad, 50));
+      window.addEventListener('resize', setPad);
+      // por si el loader inserta el header asincrónicamente
+      const obs = new MutationObserver(setPad);
+      obs.observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
+</body>
+</html>
