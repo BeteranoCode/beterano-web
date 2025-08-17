@@ -1,6 +1,7 @@
 [submodule "beterano-map"]
 	path = beterano-map
 	url = https://github.com/BeteranoCode/beterano-map.git
+	branch = main
 [submodule "marketplace-inbox-manager"]
 	path = marketplace-inbox-manager
 	url = https://github.com/BeteranoCode/marketplace-inbox-manager.git
@@ -13,3 +14,4 @@
 [submodule "beterano-web-header"]
 	path = beterano-web-header
 	url = https://github.com/BeteranoCode/beterano-web-header.git
+	branch = main
