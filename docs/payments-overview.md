@@ -1,3 +1,5 @@
-# Pagos
+# Pagos — Overview (público)
 
-Resumen de suscripciones e impuestos.
+- Gestión de **suscripciones** y **compras** con un proveedor de pagos.
+- Cálculo de **impuestos** automatizado para cumplir normativa.
+- La API registra el **estado de pago** y la **referencia de factura** para reporting.
